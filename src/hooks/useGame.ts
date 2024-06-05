@@ -2,24 +2,17 @@ import { shuffleArray } from '@/helpers/helper';
 import { useEffect, useState } from 'react';
 const useGame = () => {
 	const originalGrid = [1, 2, 3, 4, 5, 6, 7, 8, null];
-	const [grid, setGrid] = useState(originalGrid);
+
+	const [grid, setGrid] = useState<(number | null)[]>([]);
 	const [finish, setFinish] = useState(false);
 	const [moveCounter, setMoveCounter] = useState(0);
 
 	const handleClick = (value: any, index: any) => {
-		// const indexNull = grid.indexOf(null);
-		// const [cursorRow, cursorColumn] = getRowAndCol(index);
-		// const [nullRow, nullColumn] = getRowAndCol(indexNull);
-
-		// handleMove(cursorRow, cursorColumn, nullRow, nullColumn, grid, indexNull, index, value);
-		const newGrid = [...grid];
-
-		const indexNull = newGrid.indexOf(null);
-
+		const indexNull = grid.indexOf(null);
 		const [cursorRow, cursorColumn] = getRowAndCol(index);
 		const [nullRow, nullColumn] = getRowAndCol(indexNull);
 
-		handleMove(cursorRow, cursorColumn, nullRow, nullColumn, newGrid, indexNull, index, value);
+		handleMove(cursorRow, cursorColumn, nullRow, nullColumn, grid, indexNull, index, value);
 	};
 
 	const handleMove = (
