@@ -7,11 +7,19 @@ const useGame = () => {
 	const [moveCounter, setMoveCounter] = useState(0);
 
 	const handleClick = (value: any, index: any) => {
-		const indexNull = grid.indexOf(null);
+		// const indexNull = grid.indexOf(null);
+		// const [cursorRow, cursorColumn] = getRowAndCol(index);
+		// const [nullRow, nullColumn] = getRowAndCol(indexNull);
+
+		// handleMove(cursorRow, cursorColumn, nullRow, nullColumn, grid, indexNull, index, value);
+		const newGrid = [...grid];
+
+		const indexNull = newGrid.indexOf(null);
+
 		const [cursorRow, cursorColumn] = getRowAndCol(index);
 		const [nullRow, nullColumn] = getRowAndCol(indexNull);
 
-		handleMove(cursorRow, cursorColumn, nullRow, nullColumn, grid, indexNull, index, value);
+		handleMove(cursorRow, cursorColumn, nullRow, nullColumn, newGrid, indexNull, index, value);
 	};
 
 	const handleMove = (
